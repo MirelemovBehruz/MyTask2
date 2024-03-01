@@ -25,15 +25,19 @@ public class Room implements ChangeablePlace {
     public void move(Place place) {
         if(curentDoor.isOpened==true&& curentDoor.relationRoom==place.room) {
             place.room = this;
-            System.out.println("перешел ");
+            System.out.println("перешел в  "+this);
             place.element=defaultElement;
+            System.out.println("там он очутился "+defaultElement);
         }
+        else throw  new InvalidActionException("Нету входа в комнату "+this.name);
 
 
     }
 
-
-
+    @Override
+    public String toString() {
+        return name;
+    }
 
     class Door extends Element {
 
