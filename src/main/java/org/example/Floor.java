@@ -25,11 +25,17 @@ public class Floor implements ChangeablePlace {
         if(curentLadder.canConect==true&& curentLadder.floor2==place.floor) {
             place.floor = this;
             place.room=defaultRoom;
+            System.out.println("Спустился на "+this);
+            System.out.println("там он очутился "+defaultRoom);
         }
 
 
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 
     public static class Ladder extends Element {
         Floor floor1,floor2;

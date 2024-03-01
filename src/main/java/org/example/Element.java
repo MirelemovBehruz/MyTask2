@@ -11,5 +11,11 @@ public class Element implements ChangeablePlace{
     @Override
     public void move(Place place) {
         place.element=this;
+        System.out.println("плыл до "+this);
+    }
+
+    @Override
+    public String toString() {
+        return type;
     }
 }
