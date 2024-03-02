@@ -1,8 +1,12 @@
-package org.example;
+package org.example.World;
+
+import org.example.Home.Floor;
+import org.example.Home.Room;
+import org.example.Verb.ChangeablePlace;
 
 public class Person {
-    Place place;
-    boolean beAttachSomeWhere=false;
+    private Place place;
+    private boolean beAttachSomeWhere=false;
     private String name;
     public Person(String name,Place place)
     {
@@ -22,17 +26,17 @@ public class Person {
     public  void  goOnLadder(Floor floor)
     {
         if(beAttachSomeWhere) {
-            floor.curentLadder.canConect = true;
+            floor.getCurentLadder().setCanConect( true);
             System.out.println(name + " двигался по лестнице ");
         }else System.out.println("Из за отсуствия силы тяжести не смог спустится вниз");
     }
 
     public void pushCurentDoor(Room room)
     {
-        System.out.println(name+" изо всех сил толкал "+room.curentDoor.type);
+        System.out.println(name+" изо всех сил толкал "+room.getCurentDoor().getType());
        if(beAttachSomeWhere) {
-           room.curentDoor.isOpened = true;
-           System.out.println(room.curentDoor.type + " открылся");
+           room.getCurentDoor().setOpened(true);
+           System.out.println(room.getCurentDoor().getType() + " открылся");
        }else System.out.println(" в состоянии невесомости это не получился");
 
     }
