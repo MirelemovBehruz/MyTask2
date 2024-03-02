@@ -1,6 +1,6 @@
-package org.example;
+package org.example.Error;
 
-class CanBeAnyError extends Exception {
+public class CanBeAnyError extends Exception {
     public CanBeAnyError(String message) {
         super(message);
     }

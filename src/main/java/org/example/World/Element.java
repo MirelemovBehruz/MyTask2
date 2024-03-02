@@ -1,16 +1,21 @@
-package org.example;
+package org.example.World;
 
-public class Element implements ChangeablePlace{
-    String type;
+import org.example.Verb.ChangeablePlace;
+
+public class Element implements ChangeablePlace {
+    private String type;
     public Element(String type)
     {
         this.type=type;
     }
 
+    public String getType() {
+        return type;
+    }
 
     @Override
     public void move(Place place) {
-        place.element=this;
+        place.setElement(this);
         System.out.println("плыл до "+this);
     }
 

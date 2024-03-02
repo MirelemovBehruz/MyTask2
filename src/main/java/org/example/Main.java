@@ -1,10 +1,14 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.example.Error.CanBeAnyError;
+import org.example.Verb.Action;
+import org.example.World.Element;
+import org.example.Home.Floor;
+import org.example.Home.Room;
+import org.example.World.Person;
+import org.example.World.Place;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+
 public class Main {
 
    public static void someProcess() throws CanBeAnyError {
@@ -14,28 +18,28 @@ public class Main {
             Room room4=new Room("гостиная",table);
             Room room3=new Room("нижний колидор",null);
             Floor floor1=new Floor("1й этаж",room3);
-             floor1.curentLadder=new Floor.Ladder(floor1,null,false);
-            Room room2=new Room("верхний колидор",floor1.curentLadder);
+             floor1.setCurentLadder(new Floor.Ladder(floor1,null,false));
+            Room room2=new Room("верхний колидор",floor1.getCurentLadder());
             Room room1=new Room("начальное комната",null);
 
             Floor floor2=new Floor("2й этаж",room2);
-             floor1.curentLadder.floor2=floor2;
+             floor1.getCurentLadder().setFloor2(floor2);
 
 
 
 
 
-             // добавим в список ряд элементов
+
              Element chair=new Element("стулья");
              Element bench=new Element("скамейки");
              Element bowl=new Element("миски");
              Element dish=new Element("тарелки");
              Element spoon=new Element("ложки");
 
-            room2.curentDoor=room2.new Door(room1,false);
-            room4.curentDoor=room4.new Door(room3,false);
+            room2.setCurentDoor(room2.new Door(room1,false));
+            room4.setCurentDoor(room4.new Door(room3,false));
 
-            floor1.curentLadder=new Floor.Ladder(floor1,floor2,false);
+            floor1.setCurentLadder(new Floor.Ladder(floor1,floor2,false));
 
 
 
@@ -53,7 +57,7 @@ public class Main {
 //процесс происходит здесь
 
 
-                     znayka.changePlace(room2.curentDoor);
+                     znayka.changePlace(room2.getCurentDoor());
 
                      znayka.pushCurentDoor(room2);
 
@@ -69,7 +73,7 @@ public class Main {
                      znayka.goOnLadder(floor1);
 
                      znayka.changePlace(floor1);
-                     znayka.changePlace(room4.curentDoor);
+                     znayka.changePlace(room4.getCurentDoor());
 
                      znayka.cling("за притолоку");
 
@@ -87,7 +91,7 @@ public class Main {
                action.run();
             }catch (Exception e){
 
-            throw new CanBeAnyError("вот проблема");
+            throw new CanBeAnyError("вот проблема"+e.getMessage());
             }
 
 
